@@ -1,3 +1,26 @@
-# threejs-sneaker-configurator
-3D Sneaker Configurator is an interactive web application built with Three.js, JavaScript, HTML, and CSS. It allows users to customize a 3D sneaker by changing colors, materials, and textures in real time. The project uses GLB/GLTF models and WebGL to deliver smooth 3D visualization in the browser.
+# Sneaker Material Textures
 
+Three seamless 1024x1024 PBR texture sets for Three.js:
+
+- `leather/`
+- `mesh/`
+- `knit/`
+
+Each folder includes:
+
+- `*_basecolor.png` - connect to `map`
+- `*_normal.png` - connect to `normalMap`
+- `*_roughness.png` - connect to `roughnessMap`
+- `*_ao.png` - connect to `aoMap`
+- `*_height.png` - optional displacement/bump source
+- `*_orm.png` - packed AO, roughness, metalness channels (R/G/B)
+
+Copy this folder to your web project's `public/textures` directory. Import
+`three-materials.js`, then call `createSneakerMaterial('leather')`,
+`createSneakerMaterial('mesh')`, or `createSneakerMaterial('knit')`.
+
+For `aoMap`, your geometry needs a `uv1` attribute. In modern Three.js:
+
+```js
+geometry.setAttribute('uv1', geometry.attributes.uv);
+```

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Sneaker Configurator</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="app">
+    <section class="viewer">
+      <div id="scene" class="scene" aria-label="Interactive 3D sneaker">
+        <div id="loader" class="loader"><i></i><span>Loading sneaker</span></div>
+      </div>
+      <button id="resetView" class="reset" type="button" aria-label="Reset camera" title="Reset camera">&#8635;</button>
+    </section>
+
+    <aside class="options">
+      <div class="options-heading">
+        <p>Sneaker Studio</p>
+        <h1>Customize your sneaker</h1>
+      </div>
+
+      <section class="option-group">
+        <h2>Material</h2>
+        <div id="upperMaterial" class="image-options three">
+          <button class="image-card" data-value="mesh"><img src="./assets/configurator/material-mesh.jpg" alt="Mesh material texture"><span>Mesh</span></button>
+          <button class="image-card active" data-value="leather"><img src="./assets/configurator/material-leather.jpg" alt="Leather material texture"><span>Leather</span></button>
+          <button class="image-card" data-value="knit"><img src="./assets/configurator/material-knit.jpg" alt="Knit material texture"><span>Knit</span></button>
+        </div>
+      </section>
+
+      <section class="option-group">
+        <h2>Sole type <small>Sole always stays white</small></h2>
+        <div id="soleType" class="image-options two soles">
+          <button class="image-card active" data-value="standard"><img src="./assets/configurator/sole-standard.png" alt="Standard white sneaker sole"><span>Standard</span></button>
+          <button class="image-card" data-value="sports"><img src="./assets/configurator/sole-sports.png" alt="Sports white sneaker sole"><span>Sports</span></button>
+        </div>
+      </section>
+
+      <section class="option-group">
+        <h2>Sneaker color</h2>
+        <div id="upperColor" class="swatches">
+          <button class="swatch active" type="button" data-value="#183968" aria-label="Blue"><i class="color-blue"></i><span>Blue</span></button>
+          <button class="swatch" type="button" data-value="#d52f35" aria-label="Red"><i class="color-red"></i><span>Red</span></button>
+          <button class="swatch" type="button" data-value="#f4f3ef" aria-label="White"><i class="color-white light"></i><span>White</span></button>
+          <button class="swatch" type="button" data-value="#151918" aria-label="Black"><i class="color-black"></i><span>Black</span></button>
+        </div>
+      </section>
+
+      <section class="option-group">
+        <h2>Lace style</h2>
+        <div id="laceStyleOptions" class="image-options two laces">
+          <button class="image-card active" data-value="flat"><img src="./assets/configurator/lace-flat.jpg" alt="Flat sneaker laces"><span>Flat</span></button>
+          <button class="image-card" data-value="round"><img src="./assets/configurator/lace-round.jpg" alt="Round sneaker laces"><span>Round</span></button>
+        </div>
+      </section>
+
+      <section class="option-group last">
+        <h2>Lace color</h2>
+        <div id="laceColor" class="swatches">
+          <button class="swatch active" type="button" data-value="#754b34" aria-label="Brown"><i class="lace-brown"></i><span>Brown</span></button>
+          <button class="swatch" type="button" data-value="#317044" aria-label="Green"><i class="lace-green"></i><span>Green</span></button>
+          <button class="swatch" type="button" data-value="#2457c5" aria-label="Blue"><i class="lace-blue"></i><span>Blue</span></button>
+          <button class="swatch" type="button" data-value="#d52f35" aria-label="Red"><i class="lace-red"></i><span>Red</span></button>
+        </div>
+      </section>
+    </aside>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

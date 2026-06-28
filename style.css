@@ -1,0 +1,70 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html, body { width: 100%; min-height: 100%; margin: 0; }
+body { background: #e7e7e7; font-family: Arial, sans-serif; }
+
+.app { display: grid; grid-template-columns: minmax(0, 1fr) 430px; width: 100%; min-height: 100vh; }
+.viewer, .scene { position: relative; width: 100%; min-height: 100vh; }
+.scene { cursor: grab; touch-action: none; background: radial-gradient(circle at 48% 44%, #f8f8f8 0, #e8e8e8 46%, #cfcfd1 100%); }
+.scene:active { cursor: grabbing; }
+.scene canvas { display: block; width: 100%; height: 100%; }
+
+.loader {
+  position: absolute; z-index: 5; inset: 0; display: flex; align-items: center;
+  justify-content: center; gap: 11px; color: #626964; font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase; background: #ebe9e2;
+  transition: opacity .35s, visibility .35s;
+}
+.loader.hidden { opacity: 0; visibility: hidden; }
+.loader i { width: 20px; height: 20px; border: 2px solid #bbb8ae; border-top-color: #222a27; border-radius: 50%; animation: spin .75s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.reset {
+  position: absolute; z-index: 4; top: 22px; right: 22px; width: 42px; height: 42px;
+  border: 1px solid rgba(20, 28, 25, .13); border-radius: 50%; color: #1c2522;
+  background: rgba(255, 255, 255, .75); font-size: 20px; cursor: pointer;
+  box-shadow: 0 8px 30px rgba(24, 28, 25, .08);
+}
+
+.options { padding: 34px 30px 26px; background: #faf9f5; box-shadow: -18px 0 55px rgba(22, 28, 25, .08); }
+.options-heading { padding-bottom: 26px; border-bottom: 1px solid #d9d7d0; }
+.options-heading p { margin: 0 0 8px; color: #c6533c; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.options-heading h1 { margin: 0; color: #19211f; font-size: 29px; line-height: 1.05; letter-spacing: -.04em; }
+.option-group { padding: 18px 0; border-bottom: 1px solid #d9d7d0; }
+.option-group.last { border-bottom: 0; }
+.option-group h2 { display: flex; justify-content: space-between; align-items: center; margin: 0 0 14px; color: #202725; font-size: 12px; }
+.option-group h2 small { color: #818682; font-size: 9px; font-weight: 400; }
+.image-options { display: grid; gap: 9px; }
+.image-options.three { grid-template-columns: repeat(3, 1fr); }
+.image-options.two { grid-template-columns: repeat(2, 1fr); }
+.image-card { overflow: hidden; padding: 3px; border: 1px solid #d4d2cb; border-radius: 9px; color: #5e6561; background: white; cursor: pointer; transition: border-color .2s, box-shadow .2s, transform .2s; }
+.image-card:hover { transform: translateY(-2px); border-color: #8d938f; }
+.image-card.active { border-color: #1c2522; box-shadow: 0 0 0 1px #1c2522, 0 7px 18px rgba(20, 26, 23, .12); color: #1c2522; }
+.image-card img { display: block; width: 100%; height: 68px; border-radius: 6px; object-fit: cover; }
+.image-card span { display: block; padding: 7px 3px 5px; font-size: 10px; font-weight: 600; text-align: center; }
+.soles .image-card img { height: 74px; object-fit: cover; object-position: center; }
+.laces .image-card img { height: 82px; object-position: center 45%; }
+.swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+.swatch { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 7px 4px 6px; border: 1px solid transparent; border-radius: 9px; color: #626965; background: transparent; cursor: pointer; }
+.swatch:hover { background: #efede7; }
+.swatch.active { border-color: #1c2522; color: #1c2522; background: white; }
+.swatch i { display: block; width: 27px; height: 27px; border-radius: 50%; background: var(--color); box-shadow: inset 0 0 0 1px rgba(0,0,0,.13), 0 2px 5px rgba(0,0,0,.12); }
+.swatch i.light { box-shadow: inset 0 0 0 1px #c9c7c0, 0 2px 5px rgba(0,0,0,.1); }
+.swatch span { font-size: 8px; text-align: center; }
+.color-blue { --color: #183968; }
+.color-red { --color: #d52f35; }
+.color-white { --color: #f4f3ef; }
+.color-black { --color: #151918; }
+.lace-brown { --color: #754b34; }
+.lace-green { --color: #317044; }
+.lace-blue { --color: #2457c5; }
+.lace-red { --color: #d52f35; }
+
+@media (max-width: 800px) {
+  .app { grid-template-columns: 1fr; }
+  .viewer, .scene { min-height: 58vh; }
+  .options { padding: 30px 24px; }
+}
+@media (max-width: 600px) {
+  .reset { top: 14px; right: 14px; }
+}
